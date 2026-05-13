@@ -142,7 +142,7 @@ export default function Bracket() {
                     <div className="winner-card fade-in" style={{ padding: '24px 28px', position: 'relative' }}>
                       <div className="winner-label">👑 Champion</div>
                       <div className="winner-name" style={{ fontSize: 32 }}>{champion}</div>
-                      <Confetti active count={70} />
+                      <Confetti active count={70} fixed />
                     </div>
                   </div>
                 )}

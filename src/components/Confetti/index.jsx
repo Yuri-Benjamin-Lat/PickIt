@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 
 const COLORS = ['#5B5BF4', '#FF4D8D', '#C6F94D', '#FFB23F', '#2BD4C4', '#A66DFF']
 
-export function Confetti({ active, count = 60 }) {
+export function Confetti({ active, count = 60, fixed = false }) {
   const pieces = useMemo(() => {
     if (!active) return []
     return Array.from({ length: count }).map((_, i) => {
@@ -22,7 +22,7 @@ export function Confetti({ active, count = 60 }) {
 
   if (!active) return null
   return (
-    <div className="confetti-layer">
+    <div className="confetti-layer" style={fixed ? { position: 'fixed' } : {}}>
       {pieces.map(p => (
         <span key={p.i} className="confetti-piece" style={{
           background: p.color,
