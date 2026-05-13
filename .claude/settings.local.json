@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Expand-Archive -Path \"C:\\\\Users\\\\yuril\\\\OneDrive\\\\Desktop\\\\PickIt.zip\" -DestinationPath \"C:\\\\Users\\\\yuril\\\\OneDrive\\\\Desktop\\\\PickIt_extracted\" -Force)",
+      "Read(//c/Users/yuril/OneDrive/Desktop/**)",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\yuril\\\\OneDrive\\\\Desktop\\\\PickIt_extracted\" -Recurse -Force | ForEach-Object { $_.FullName })"
+    ]
+  }
+}

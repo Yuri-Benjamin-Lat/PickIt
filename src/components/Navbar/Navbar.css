@@ -1,0 +1,14 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  height: 60px;
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar-logo {
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--accent);
+  text-decoration: none;
+}
