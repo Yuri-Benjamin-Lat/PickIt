@@ -17,6 +17,8 @@ export function Icon({ name, size = 20, stroke = 2 }) {
     flame:    <><path d="M12 3c1 4 5 4 5 9a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3-1-3 1-5 1-8z"/></>,
     dice:     <><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.3" fill="currentColor" stroke="none"/><circle cx="16" cy="16" r="1.3" fill="currentColor" stroke="none"/><circle cx="16" cy="8" r="1.3" fill="currentColor" stroke="none"/><circle cx="8" cy="16" r="1.3" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/></>,
     crown:    <><path d="M3 18h18l-2-9-4 4-4-7-4 7-4-4z"/></>,
+    moon:     <><path d="M21 13A9 9 0 1 1 11 3a7 7 0 0 0 10 10z"/></>,
+    sun:      <><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></>,
   }
   return <svg viewBox="0 0 24 24" style={s} aria-hidden="true">{paths[name] || paths.sparkle}</svg>
 }

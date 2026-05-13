@@ -1,11 +1,13 @@
 import { Link, useLocation } from 'react-router-dom'
 import { ROUTE_TITLES } from '../../lib/routes'
 import { Icon } from '../Icon'
+import { useTheme } from '../../hooks/useTheme'
 
 export default function Topbar() {
   const { pathname } = useLocation()
   const title = ROUTE_TITLES[pathname] || 'Pickit'
   const isHome = pathname === '/'
+  const [dark, toggleTheme] = useTheme()
 
   return (
     <div className="topbar">
@@ -17,6 +19,13 @@ export default function Topbar() {
           <span className="nav-dot" style={{ width: 6, height: 6, background: 'var(--lime)' }} />
           v1.0
         </div>
+        <button
+          className="icon-btn"
+          onClick={toggleTheme}
+          title={dark ? 'Light mode' : 'Dark mode'}
+        >
+          <Icon name={dark ? 'sun' : 'moon'} size={16} />
+        </button>
         {!isHome && (
           <Link to="/" className="btn btn-ghost btn-sm">
             <Icon name="home" size={13} /> Home

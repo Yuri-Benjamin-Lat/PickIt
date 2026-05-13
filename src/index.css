@@ -632,3 +632,29 @@ h1.headline em { font-style: italic; font-family: 'Instrument Serif', serif; fon
 .toggle-row { display: flex; gap: 4px; padding: 4px; background: var(--chip); border-radius: 999px; }
 .toggle-row button { padding: 6px 12px; border-radius: 999px; font-size: 12px; font-weight: 600; color: var(--muted); transition: all 120ms; }
 .toggle-row button.on { background: var(--paper); color: var(--ink); box-shadow: var(--shadow-sm); }
+
+/* ─── Dark mode ─── */
+[data-theme="dark"] {
+  --cream: #0D0B1A;
+  --paper: #16132A;
+  --ink: #EDE9F8;
+  --ink-2: #BCB5D4;
+  --muted: #7A7390;
+  --line: #2C2650;
+  --line-2: #201C3A;
+  --chip: #1E1A38;
+
+  --indigo: #8585FF;
+  --indigo-glow: rgba(133,133,255,0.4);
+  --pink: #FF6BA0;
+  --pink-glow: rgba(255,107,160,0.35);
+  --lime: #D4FF5A;
+  --teal: #3DDFCF;
+  --violet: #BB88FF;
+  --red: #FF7070;
+  --amber: #FFC04D;
+}
+
+[data-theme="dark"] .topbar {
+  background: rgba(13,11,26,0.85);
+}
