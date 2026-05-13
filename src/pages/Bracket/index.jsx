@@ -21,7 +21,11 @@ function buildBracket(participants) {
   rounds.push(r0)
   while (rounds[rounds.length - 1].length > 1) {
     const prev = rounds[rounds.length - 1]
-    rounds.push(prev.map(() => ({ a: null, b: null, winner: null })))
+    const next = []
+    for (let i = 0; i < prev.length; i += 2) {
+      next.push({ a: null, b: null, winner: null })
+    }
+    rounds.push(next)
   }
   return rounds
 }
