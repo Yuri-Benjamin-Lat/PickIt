@@ -648,11 +648,11 @@ h1.headline em { font-style: italic; font-family: 'Instrument Serif', serif; fon
   --indigo-glow: rgba(133,133,255,0.4);
   --pink: #FF6BA0;
   --pink-glow: rgba(255,107,160,0.35);
-  --lime: #D4FF5A;
+  --lime: #96C820;
   --teal: #3DDFCF;
   --violet: #BB88FF;
   --red: #FF7070;
-  --amber: #FFC04D;
+  --amber: #D49030;
 }
 
 [data-theme="dark"] .topbar {
