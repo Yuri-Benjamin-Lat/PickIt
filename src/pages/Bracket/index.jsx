@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { withAccent } from '../../lib/accent'
 import { shuffle } from '../../utils/random'
 import { ToolHero } from '../../components/ToolHero'
@@ -60,6 +60,7 @@ export default function Bracket() {
   const [bracket, setBracket] = useState(null)
   const [progress, setProgress] = useState(0)
   const [running, setRunning] = useState(false)
+  const roundRefs = useRef([])
 
   const generate = () => {
     if (names.length < 2) return
@@ -76,9 +77,16 @@ export default function Bracket() {
     })
   }
 
+  useEffect(() => {
+    if (progress > 0 && roundRefs.current[progress - 1]) {
+      roundRefs.current[progress - 1].scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' })
+    }
+  }, [progress])
+
   const bracketSize = (() => { let s = 1; while (s < names.length) s *= 2; return s })()
   const byes = bracketSize - names.length
   const champion = bracket && progress >= bracket.length ? bracket[bracket.length - 1][0].winner?.name : null
+  const colHeight = bracket ? Math.max(bracket[0].length * 100, 400) : 400
 
   return (
     <div className="page" style={withAccent('bracket')}>
@@ -110,7 +118,7 @@ export default function Bracket() {
             <div className="bracket-wrap">
               <div className="bracket">
                 {bracket.map((round, ri) => (
-                  <div className="bracket-round" key={ri}>
+                  <div className="bracket-round" key={ri} ref={el => { roundRefs.current[ri] = el }} style={{ height: colHeight }}>
                     <div className="bracket-round-label">{roundLabel(ri, bracket.length)}</div>
                     {round.map((m, mi) => {
                       const revealed = ri < progress
@@ -137,7 +145,7 @@ export default function Bracket() {
                   </div>
                 ))}
                 {champion && (
-                  <div className="bracket-round" style={{ justifyContent: 'center' }}>
+                  <div className="bracket-round" style={{ justifyContent: 'center', height: colHeight }}>
                     <div className="bracket-round-label">Champion</div>
                     <div className="winner-card fade-in" style={{ padding: '24px 28px', position: 'relative' }}>
                       <div className="winner-label">👑 Champion</div>

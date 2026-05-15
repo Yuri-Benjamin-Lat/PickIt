@@ -515,8 +515,8 @@ button:disabled:active { transform: none; }
 
 /* ─── Bracket ─── */
 .bracket-wrap { padding: 32px; overflow-x: auto; }
-.bracket { display: flex; gap: 40px; min-height: 480px; align-items: stretch; }
-.bracket-round { display: flex; flex-direction: column; justify-content: space-around; min-width: 200px; gap: 12px; position: relative; }
+.bracket { display: flex; gap: 40px; min-height: 480px; align-items: flex-start; }
+.bracket-round { display: flex; flex-direction: column; justify-content: space-around; min-width: 200px; position: relative; }
 .bracket-round-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-align: center; margin-bottom: 8px; }
 .match { border: 1px solid var(--line); border-radius: 12px; background: var(--paper); overflow: hidden; min-height: 76px; }
 .match-row { display: flex; align-items: center; padding: 8px 12px; font-size: 13px; font-weight: 500; gap: 8px; border-bottom: 1px dashed var(--line); }
@@ -524,6 +524,20 @@ button:disabled:active { transform: none; }
 .match-row .seed { font-family: var(--font-mono); font-size: 10px; color: var(--muted); width: 18px; }
 .match-row.winner { color: var(--accent, var(--indigo)); font-weight: 600; background: color-mix(in oklab, var(--accent, var(--indigo)) 8%, transparent); }
 .match-row.loser { color: var(--muted); text-decoration: line-through; opacity: 0.6; }
+
+/* ─── Themed scrollbars ─── */
+.bracket-wrap, .tool-stage, .main, .sidebar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--muted) var(--line-2);
+}
+.bracket-wrap::-webkit-scrollbar, .tool-stage::-webkit-scrollbar,
+.main::-webkit-scrollbar, .sidebar::-webkit-scrollbar { width: 6px; height: 6px; }
+.bracket-wrap::-webkit-scrollbar-track, .tool-stage::-webkit-scrollbar-track,
+.main::-webkit-scrollbar-track, .sidebar::-webkit-scrollbar-track { background: var(--line-2); border-radius: 8px; }
+.bracket-wrap::-webkit-scrollbar-thumb, .tool-stage::-webkit-scrollbar-thumb,
+.main::-webkit-scrollbar-thumb, .sidebar::-webkit-scrollbar-thumb { background: var(--muted); border-radius: 8px; }
+.bracket-wrap::-webkit-scrollbar-thumb:hover, .tool-stage::-webkit-scrollbar-thumb:hover,
+.main::-webkit-scrollbar-thumb:hover, .sidebar::-webkit-scrollbar-thumb:hover { background: var(--ink-2); }
 
 /* ─── Home page ─── */
 .home-hero {
