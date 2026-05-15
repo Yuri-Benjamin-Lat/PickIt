@@ -46,23 +46,18 @@ export default function TurnOrder() {
               <div className="counter" style={{ marginBottom: 6 }}>
                 Going first → last · <b>{order.length}</b> in order
               </div>
-              {order.map((name, i) => (
-                <div
-                  key={i}
-                  className={`order-row ${highlightIdx >= i ? 'highlight fade-in' : ''}`}
-                  style={{
-                    opacity: highlightIdx >= i ? 1 : 0.15,
-                    transform: highlightIdx >= i ? 'translateX(0)' : 'translateX(-12px)',
-                    animationDelay: `${i * 50}ms`,
-                  }}
-                >
-                  <div className="order-rank">{i + 1}</div>
-                  <div>{name}</div>
-                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--muted)' }}>
-                    {i === 0 ? 'First up' : i === order.length - 1 ? 'Closer' : `Turn ${i + 1}`}
+              {order.map((name, i) => {
+                if (i > highlightIdx) return null
+                return (
+                  <div key={i} className="order-row highlight fade-in">
+                    <div className="order-rank">{i + 1}</div>
+                    <div>{name}</div>
+                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--muted)' }}>
+                      {i === 0 ? 'First up' : i === order.length - 1 ? 'Closer' : `Turn ${i + 1}`}
+                    </div>
                   </div>
-                </div>
-              ))}
+                )
+              })}
             </div>
           )}
         </div>

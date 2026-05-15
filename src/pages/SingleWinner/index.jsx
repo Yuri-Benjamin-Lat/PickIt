@@ -6,7 +6,6 @@ import { NameInput } from '../../components/NameInput'
 import { Confetti } from '../../components/Confetti'
 import { Countdown } from '../../components/Countdown'
 import { StageEmpty } from '../../components/StageEmpty'
-import { ToggleRow } from '../../components/ToggleRow'
 import { Icon } from '../../components/Icon'
 
 export default function SingleWinner() {
@@ -14,7 +13,7 @@ export default function SingleWinner() {
   const [spinning, setSpinning] = useState(false)
   const [winner, setWinner] = useState(null)
   const [reelTransform, setReelTransform] = useState('translateY(0)')
-  const [reelDur, setReelDur] = useState(3200)
+  const reelDur = 3200
   const [showCountdown, setShowCountdown] = useState(false)
   const [reelItems, setReelItems] = useState([])
 
@@ -56,18 +55,6 @@ export default function SingleWinner() {
       <div className="tool-layout">
         <aside className="tool-aside">
           <NameInput names={names} setNames={setNames} accent="var(--t-single)" />
-          <div className="card">
-            <div className="label">Spin speed</div>
-            <ToggleRow
-              value={reelDur}
-              onChange={setReelDur}
-              options={[
-                { value: 1800, label: 'Snappy' },
-                { value: 3200, label: 'Suspense' },
-                { value: 5000, label: 'Marathon' },
-              ]}
-            />
-          </div>
           <button
             className="btn btn-accent btn-lg"
             onClick={spin}

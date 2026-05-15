@@ -45,29 +45,24 @@ export default function RoleAssigner() {
       <div className="tool-layout">
         <aside className="tool-aside">
           <NameInput names={names} setNames={setNames} accent="var(--t-role)" />
+          <NameInput
+            names={roles} setNames={setRoles}
+            accent="var(--t-role)"
+            placeholder="Add a role…"
+            label="Role Pool"
+            counterLabel="roles"
+            showSample={false}
+          />
           <div className="card">
-            <div className="between" style={{ marginBottom: 14 }}>
-              <div className="label" style={{ margin: 0 }}>Role pool</div>
-              <div className="counter"><b>{roles.length}</b> roles</div>
-            </div>
-            <textarea
-              className="textarea"
-              value={roles.join('\n')}
-              onChange={(e) => setRoles(e.target.value.split('\n').map(s => s.trim()).filter(Boolean))}
-              placeholder="One role per line…"
-              style={{ minHeight: 120 }}
+            <div className="label">Allow duplicates</div>
+            <ToggleRow
+              value={allowDupes ? 'yes' : 'no'}
+              onChange={(v) => setAllowDupes(v === 'yes')}
+              options={[
+                { value: 'yes', label: 'Roles repeat' },
+                { value: 'no', label: 'Unique only' },
+              ]}
             />
-            <div style={{ marginTop: 14 }}>
-              <div className="label">Allow duplicates</div>
-              <ToggleRow
-                value={allowDupes ? 'yes' : 'no'}
-                onChange={(v) => setAllowDupes(v === 'yes')}
-                options={[
-                  { value: 'yes', label: 'Roles repeat' },
-                  { value: 'no', label: 'Unique only' },
-                ]}
-              />
-            </div>
           </div>
           <button className="btn btn-accent btn-lg" onClick={assign} disabled={names.length === 0 || roles.length === 0} style={{ width: '100%' }}>
             <Icon name="shuffle" size={14} /> {assignments ? 'Reassign roles' : 'Assign roles'}

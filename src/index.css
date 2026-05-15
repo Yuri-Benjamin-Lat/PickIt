@@ -83,9 +83,7 @@ a { text-decoration: none; color: inherit; }
   gap: 10px;
   padding: 4px 6px;
   border-radius: 10px;
-  transition: background 120ms;
 }
-.brand:hover { background: var(--line-2); }
 .brand-mark {
   width: 36px; height: 36px;
   border-radius: 50%;

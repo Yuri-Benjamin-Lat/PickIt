@@ -2,7 +2,7 @@ import { useState, useRef } from 'react'
 import { shuffle, SAMPLE_NAMES } from '../../utils/random'
 import { Icon } from '../Icon'
 
-export function NameInput({ names, setNames, accent = 'var(--indigo)', placeholder = 'Add a name…' }) {
+export function NameInput({ names, setNames, accent = 'var(--indigo)', placeholder = 'Add a name…', label = 'Participants', counterLabel = 'in pool', showSample = true }) {
   const [val, setVal] = useState('')
   const inputRef = useRef(null)
 
@@ -22,8 +22,8 @@ export function NameInput({ names, setNames, accent = 'var(--indigo)', placehold
   return (
     <div className="card" style={{ '--accent': accent }}>
       <div className="between" style={{ marginBottom: 14 }}>
-        <div className="label" style={{ margin: 0 }}>Participants</div>
-        <div className="counter"><b>{names.length}</b> in pool</div>
+        <div className="label" style={{ margin: 0 }}>{label}</div>
+        <div className="counter"><b>{names.length}</b> {counterLabel}</div>
       </div>
       <form onSubmit={(e) => { e.preventDefault(); add() }} style={{ display: 'flex', gap: 8, marginBottom: 14 }}>
         <input
@@ -53,9 +53,11 @@ export function NameInput({ names, setNames, accent = 'var(--indigo)', placehold
         </div>
       )}
       <div style={{ display: 'flex', gap: 8, marginTop: 16, flexWrap: 'wrap' }}>
-        <button className="btn btn-ghost btn-sm" onClick={loadSample}>
-          <Icon name="sparkle" size={12} /> Sample set
-        </button>
+        {showSample && (
+          <button className="btn btn-ghost btn-sm" onClick={loadSample}>
+            <Icon name="sparkle" size={12} /> Sample set
+          </button>
+        )}
         {names.length > 0 && (
           <button className="btn btn-ghost btn-sm" onClick={clear}>Clear all</button>
         )}
